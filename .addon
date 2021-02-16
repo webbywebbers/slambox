@@ -1,0 +1,23 @@
+{
+		"name": "Deathmatch 98",
+		"version": "1.0",
+
+		"depends": 
+		[
+			"base",
+			"citizen",
+			"rust"
+		],
+
+		//
+		// Addons can contain multiple addons, describe them here
+		//
+		"gamemodes":
+		[
+				{
+						"name": "dm98",
+						"title": "Deathmatch 98",
+						"description": "Hurt other players more than they hurt you"
+				}
+		]
+}
