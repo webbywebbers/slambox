@@ -28,7 +28,10 @@ partial class DeathmatchPlayer : BasePlayer
 
 		Dress();
 
-		Inventory.Add( new Gun(), true );
+		Inventory.Add( new Pistol(), true );
+		Inventory.Add( new Shotgun() );
+		Inventory.Add( new SMG() );
+		Inventory.Add( new Crossbow() );
 
 		base.Respawn();
 	}

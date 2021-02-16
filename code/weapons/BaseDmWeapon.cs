@@ -7,8 +7,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
 
-[ClassLibrary( "weapon_cockfingers" )]
-partial class Gun : BaseWeapon
+partial class BaseDmWeapon : BaseWeapon
 { 
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
@@ -17,17 +16,6 @@ partial class Gun : BaseWeapon
 		base.Spawn();
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
-	}
-
-	/// <summary>
-	/// Lets make primary attack semi automatic
-	/// </summary>
-	public override bool CanPrimaryAttack( Player owner )
-	{
-		if ( !owner.Input.Pressed( InputButton.Attack1 ) ) 
-			return false;
-
-		return base.CanPrimaryAttack( owner );
 	}
 
 	public override void Reload( Player owner )
@@ -47,10 +35,6 @@ partial class Gun : BaseWeapon
 		//
 		ShootEffects();
 
-
-		bool InWater = Physics.TestPointContents( owner.EyePos, CollisionLayer.Water );
-		var forward = owner.EyeRot.Forward * (InWater ? 500 : 4000);
-
 		//
 		// ShootBullet is coded in a way where we can have bullets pass through shit
 		// or bounce off shit, in which case it'll return multiple results
@@ -67,7 +51,7 @@ partial class Gun : BaseWeapon
 			//
 			using ( Prediction.Off() )
 			{
-				var damage = DamageInfo.FromBullet( tr.EndPos, forward.Normal * 100, 15 )
+				var damage = DamageInfo.FromBullet( tr.EndPos, owner.EyeRot.Forward * 100, 15 )
 					.UsingTraceResult( tr )
 					.WithAttacker( owner )
 					.WithWeapon( this );
@@ -78,7 +62,7 @@ partial class Gun : BaseWeapon
 	}
 
 	[Client]
-	void ShootEffects()
+	protected virtual void ShootEffects()
 	{
 		Host.AssertClient();
 
@@ -88,9 +72,39 @@ partial class Gun : BaseWeapon
 		ViewModelEntity?.SetAnimParam( "fire", true );
 	}
 
-	public override void AttackSecondary( Player owner ) 
+	/// <summary>
+	/// Shoot a single bullet
+	/// </summary>
+	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize )
 	{
-		AttackPrimary( owner );
+		var forward = Owner.EyeRot.Forward;
+		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
+		forward = forward.Normal;
+
+		//
+		// ShootBullet is coded in a way where we can have bullets pass through shit
+		// or bounce off shit, in which case it'll return multiple results
+		//
+		foreach ( var tr in TraceBullet( Owner.EyePos, Owner.EyePos + forward * 5000, bulletSize ) )
+		{
+			tr.Surface.DoBulletImpact( tr );
+
+			if ( !IsServer ) continue;
+			if ( !tr.Entity.IsValid() ) continue;
+
+			//
+			// We turn predictiuon off for this, so any exploding effects don't get culled etc
+			//
+			using ( Prediction.Off() )
+			{
+				var damageInfo = DamageInfo.FromBullet( tr.EndPos, forward * 100 * force, damage )
+					.UsingTraceResult( tr )
+					.WithAttacker( Owner )
+					.WithWeapon( this );
+
+				tr.Entity.TakeDamage( damageInfo );
+			}
+		}
 	}
 
 }
