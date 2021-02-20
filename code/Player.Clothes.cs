@@ -12,7 +12,7 @@ partial class DeathmatchPlayer
 	bool dressed = false;
 
 	/// <summary>
-	/// Bit of a hack to putr random clothes on the player
+	/// Just gonna keep the citizens for now, but I want the players to be rust guys.
 	/// </summary>
 	public void Dress()
 	{

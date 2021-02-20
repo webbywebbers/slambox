@@ -14,7 +14,7 @@ partial class DeathmatchPlayer : BasePlayer
 
 	public override void Respawn()
 	{
-		SetModel( "models/citizen/citizen.vmdl" );
+		SetModel( "models/citizen/citizen.vmdl" ); //I wonder what I can do with this
 
 		Controller = new WalkController();
 		Animator = new StandardPlayerAnimator();
@@ -74,7 +74,7 @@ partial class DeathmatchPlayer : BasePlayer
 
 		if ( LifeState != LifeState.Alive )
 			return;
-
+		//Should I remove the third person cam?
 		if ( Input.Pressed( InputButton.View ) )
 		{
 			if ( Camera is ThirdPersonCamera )

@@ -1,4 +1,4 @@
-﻿
+﻿//not gonna fuck with much of this till I understand sbox's scss stuff better
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
@@ -20,7 +20,7 @@ public partial class DeathmatchHud : Hud
 		var healthPanel = RootPanel.Add.Panel( "health" ); 
 		var icon = healthPanel.Add.Label( "🩸", "icon" );
 		var health = healthPanel.Add.Label( "", "value" );
-		health.Text = "100";
+		health.Text = "75"; //ooh 75 health, better be weary
 
 		//	health.BindToMethod( "text", () => Player.Local?.Health );
 
@@ -37,27 +37,7 @@ public partial class DeathmatchHud : Hud
 	public void OnPlayerDied( string victim, string attacker = null )
 	{
 		Host.AssertClient();
-		/*
-		bool attackerIsMe = Player.Local != null && Player.Local.Name == attacker;
-		bool victimIsMe = Player.Local != null && Player.Local.Name == victim;
-
-		var panel = GameFeed.Add.PanelWithClass( "entry" );
-
-		var a = panel.Add.Label( attacker, "attacker" );
-		panel.Add.Label( "killed", "killed" );
-		var v = panel.Add.Label( victim, "victim" );
-
-		if ( attackerIsMe ) a.Class.Add( "me" );
-		if ( victimIsMe ) v.Class.Add( "me" );
-
-		panel.Class.Add( "old" );
-
-		panel.WaitThen( 5.0f, () =>
-		{
-			panel.Class.Add( "deleted" );
-			panel.DeleteAfterTransition();
-		} );
-		*/
+		
 	}
 
 	[Client]
@@ -65,6 +45,6 @@ public partial class DeathmatchHud : Hud
 	{
 		Host.AssertClient();
 
-		Log.Info( "TODO SHOW DEATH SCREEN" );
+		Log.Info( "garry death screen pls" );
 	}
 }

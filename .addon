@@ -1,5 +1,5 @@
 {
-		"name": "Deathmatch 98",
+		"name": "Slambox",
 		"version": "1.0",
 
 		"depends": 
@@ -15,9 +15,9 @@
 		"gamemodes":
 		[
 				{
-						"name": "dm98",
-						"title": "Deathmatch 98",
-						"description": "Hurt other players more than they hurt you"
+						"name": "Slambox",
+						"title": "Slambox",
+						"description": "Fast paced combat"
 				}
 		]
 }
