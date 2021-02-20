@@ -1,4 +1,4 @@
-﻿//not gonna fuck with much of this till I understand sbox's scss stuff better
+﻿
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
@@ -13,7 +13,7 @@ public partial class DeathmatchHud : Hud
 		if ( !IsClient )
 			return;
 
-		RootPanel.StyleSheet = StyleSheet.FromFile( "/ui/DeathmatchHud.scss" );
+		RootPanel.StyleSheet = StyleSheet.FromFile( "/ui/DeathmatchHud.scss" ); // I guess this hud is fine? I don't really care as long as it has an ammo count and healthbar
 
 		//	RootPanel.AddChild<ChatUI>();
 

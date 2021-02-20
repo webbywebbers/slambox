@@ -9,14 +9,12 @@ partial class SlamboxGame : Game
 {
 	public SlamboxGame()
 	{
-		//
+		//<summary>
 		// Create the HUD entity. This is always broadcast to all clients
-		// and will create the UI panels clientside. It's accessible 
-		// globally via Hud.Current, so we don't need to store it.
-		//
+		//<summary>
 		if ( IsServer )
 		{
-			new DeathmatchHud();
+			new SlamboxPlayer();
 		}
 	}
 
@@ -26,6 +24,6 @@ partial class SlamboxGame : Game
 	/// </summary>
 	public override Player CreatePlayer()
 	{
-		return new DeathmatchPlayer();
+		return new SlamboxPlayer();
 	}
 }

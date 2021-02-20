@@ -6,7 +6,7 @@ partial class DeathmatchPlayer : BasePlayer
 {
 	TimeSince timeSinceDropped;
 
-	public DeathmatchPlayer()
+	public SlamboxPlayer()
 	{
 		Inventory = new BaseInventory( this );
 		EnableClientsideAnimation = true;
@@ -16,7 +16,7 @@ partial class DeathmatchPlayer : BasePlayer
 	{
 		SetModel( "models/citizen/citizen.vmdl" ); //I wonder what I can do with this
 
-		Controller = new WalkController();
+		Controller = new WalkController(); //I wonder if this is how I could change the walkspeed eventually? I just wanna get some quake mechanics in here
 		Animator = new StandardPlayerAnimator();
 		Camera = new FirstPersonCamera();
 		  

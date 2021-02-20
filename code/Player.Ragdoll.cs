@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-partial class DeathmatchPlayer
+partial class SlamboxPlayer
 {
 	// TODO - make ragdolls one per entity
 	// TODO - make ragdolls dissapear after a load of seconds
@@ -30,7 +30,7 @@ partial class DeathmatchPlayer
 			if ( child is ModelEntity e )
 			{
 				var model = e.GetModelName();
-				if ( model != null && !model.Contains( "clothes" ) ) // Uck we 're better than this, entity tags, entity type or something?
+				if ( model != null && !model.Contains( "clothes" ) ) 
 					continue;
 
 				var clothing = new ModelEntity();
