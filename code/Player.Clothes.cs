@@ -7,7 +7,6 @@ partial class DeathmatchPlayer
 	ModelEntity pants;
 	ModelEntity jacket;
 	ModelEntity shoes;
-	ModelEntity hat;
 
 	bool dressed = false;
 
@@ -22,11 +21,7 @@ partial class DeathmatchPlayer
 		if ( Rand.Int( 0, 3 ) != 1 )
 		{
 			var model = Rand.FromArray( new[]
-			{
-				"models/citizen_clothes/trousers/trousers.jeans.vmdl",
-				"models/citizen_clothes/dress/dress.kneelength.vmdl",
-				"models/citizen/clothes/trousers_tracksuit.vmdl",
-				"models/citizen_clothes/shoes/shorts.cargo.vmdl",
+			{      
 				"models/citizen_clothes/trousers/trousers.lab.vmdl"
 			} );
 
@@ -45,8 +40,6 @@ partial class DeathmatchPlayer
 			var model = Rand.FromArray( new[]
 			{
 				"models/citizen_clothes/jacket/labcoat.vmdl",
-				"models/citizen_clothes/jacket/jacket.red.vmdl",
-				"models/citizen_clothes/gloves/gloves_workgloves.vmdl"
 			} );
 
 			jacket = new ModelEntity();
@@ -69,11 +62,7 @@ partial class DeathmatchPlayer
 		{
 			var model = Rand.FromArray( new[]
 			{
-				"models/citizen_clothes/hat/hat_hardhat.vmdl",
-				"models/citizen_clothes/hat/hat_woolly.vmdl",
 				"models/citizen_clothes/hat/hat_securityhelmet.vmdl",
-				"models/citizen_clothes/hair/hair_malestyle02.vmdl",
-				"models/citizen_clothes/hair/hair_femalebun.black.vmdl"
 			} );
 
 			hat = new ModelEntity();

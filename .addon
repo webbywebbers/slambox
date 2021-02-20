@@ -11,7 +11,7 @@
 
 		//
 		// Addons can contain multiple addons, describe them here
-		//
+	
 		"gamemodes":
 		[
 				{

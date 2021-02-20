@@ -74,16 +74,12 @@ partial class DeathmatchPlayer : BasePlayer
 
 		if ( LifeState != LifeState.Alive )
 			return;
-		//Should I remove the third person cam?
+
 		if ( Input.Pressed( InputButton.View ) )
 		{
 			if ( Camera is ThirdPersonCamera )
 			{
 				Camera = new FirstPersonCamera();
-			}
-			else
-			{
-				Camera = new ThirdPersonCamera();
 			}
 		}
 
