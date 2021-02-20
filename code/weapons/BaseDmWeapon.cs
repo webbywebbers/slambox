@@ -7,9 +7,10 @@ using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
 
+//this is gonna be the main weapon, the rocket launcher. If there's a crowbar I don't know about I might set that as the secondary.
 partial class BaseDmWeapon : BaseWeapon
 { 
-	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl"; //what's the name of the rocket launcher garry
 
 	public override void Spawn()
 	{
